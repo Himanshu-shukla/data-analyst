@@ -81,7 +81,8 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:4000/api/contact', {
+      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || (process.env.NODE_ENV === 'production' ? 'https://api.britinstitute.uk' : 'http://localhost:4000');
+      const response = await fetch(`${baseUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -237,8 +238,8 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
                       onChange={handleChange}
                       onBlur={() => handleBlur('fullName')}
                       className={`w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none transition-all duration-200 placeholder:text-slate-400 ${errors.fullName && touched.fullName
-                          ? 'border-red-400 focus:bg-white focus:ring-4 focus:ring-red-100'
-                          : 'border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100'
+                        ? 'border-red-400 focus:bg-white focus:ring-4 focus:ring-red-100'
+                        : 'border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100'
                         }`}
                       placeholder="e.g. Jane Doe"
                     />
@@ -262,8 +263,8 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
                       onChange={handleChange}
                       onBlur={() => handleBlur('email')}
                       className={`w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none transition-all duration-200 placeholder:text-slate-400 ${errors.email && touched.email
-                          ? 'border-red-400 focus:bg-white focus:ring-4 focus:ring-red-100'
-                          : 'border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100'
+                        ? 'border-red-400 focus:bg-white focus:ring-4 focus:ring-red-100'
+                        : 'border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100'
                         }`}
                       placeholder="jane@example.com"
                     />
@@ -287,8 +288,8 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
                       onChange={handleChange}
                       onBlur={() => handleBlur('phone')}
                       className={`w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none transition-all duration-200 placeholder:text-slate-400 ${errors.phone && touched.phone
-                          ? 'border-red-400 focus:bg-white focus:ring-4 focus:ring-red-100'
-                          : 'border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100'
+                        ? 'border-red-400 focus:bg-white focus:ring-4 focus:ring-red-100'
+                        : 'border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100'
                         }`}
                       placeholder="+44 7XXX XXXXXX"
                     />
@@ -336,8 +337,8 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
                 form="application-form"
                 disabled={isSubmitting || !isFormValid()}
                 className={`w-full py-4 px-6 rounded-xl font-bold text-[15px] transform transition-all duration-200 flex items-center justify-center shadow-sm ${isSubmitting || !isFormValid()
-                    ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                    : 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-blue-500/25 hover:shadow-lg active:scale-[0.98]'
+                  ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-blue-500/25 hover:shadow-lg active:scale-[0.98]'
                   }`}
               >
                 {isSubmitting ? (
