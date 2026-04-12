@@ -79,7 +79,7 @@ export default function Home() {
   {/* Trustpilot Reviews - Trust Signal */}
   <TrustpilotReviews />
       {/* Current Batch Live Updates */}
-      <CurrentBatchTestimonials />
+      <CurrentBatchTestimonials onApplyNow={handleApplyNow} />
       
       {/* 3. Create Urgency & Scarcity - Limited Time Offer */}
       <UrgencyScarcity onApplyNow={handleApplyNow} />

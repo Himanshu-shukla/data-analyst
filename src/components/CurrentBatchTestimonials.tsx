@@ -4,7 +4,11 @@ import { motion } from 'framer-motion';
 import { Star, Calendar, Users } from 'lucide-react';
 import Image from 'next/image';
 
-export default function CurrentBatchTestimonials() {
+interface CurrentBatchTestimonialsProps {
+  onApplyNow: () => void;
+}
+
+export default function CurrentBatchTestimonials({ onApplyNow }: CurrentBatchTestimonialsProps) {
   const currentBatchTestimonials = [
     {
       name: "James Mitchell",
@@ -194,6 +198,7 @@ export default function CurrentBatchTestimonials() {
             <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={onApplyNow}
                 className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 mt-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-300"
               >
                 Secure Your Seat Now
