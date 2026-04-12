@@ -38,7 +38,7 @@ export default function Footer({ onApplyNow }: FooterProps) {
           
           <div className="mt-12 pt-8 border-t border-gray-800 text-sm text-gray-500 flex flex-col items-center justify-center space-y-4">
             <div className="flex space-x-8">
-              <a href="/privacy" className="hover:text-primary transition-colors font-medium">Privacy Policy</a>
+              <a href="/privacy-policy" className="hover:text-primary transition-colors font-medium">Privacy Policy</a>
               <a href="/terms" className="hover:text-primary transition-colors font-medium">Terms & Conditions</a>
             </div>
             <p className="text-gray-600">© {new Date().getFullYear()} Brit Institute. All rights reserved.</p>
