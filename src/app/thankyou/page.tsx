@@ -438,18 +438,18 @@ export default function ThankYouPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Need Immediate Assistance?</h3>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
                 <a
-                  href="mailto:support@britinstitute.uk"
+                  href="mailto:info@britinstitute.uk"
                   className="flex items-center text-primary hover:text-primary-dark transition-colors"
                 >
                   <Mail className="w-5 h-5 mr-2" />
                   info@britinstitute.uk
                 </a>
                 <a
-                  href="tel:+447520637821"
+                  href="tel:+447520664011"
                   className="flex items-center text-primary hover:text-primary-dark transition-colors"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  +44 7520 664 011
+                  +447520664011
                 </a>
               </div>
 

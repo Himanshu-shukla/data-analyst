@@ -81,10 +81,24 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
     setIsSubmitting(true);
 
     try {
-      const result = await bootcampApi.submitApplication({
-        ...formData,
-        source: 'bootcamp_application'
+      const response = await fetch('http://localhost:4000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          course: formData.course,
+          subject: `${formData.course || 'Data Analytics Career Program'} - Application`,
+          message: `User submitted an application for the ${formData.course || 'Data Analytics Career Program'}.`,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error('API request failed');
+      }
 
       setIsSubmitting(false);
       setFormData({

@@ -144,7 +144,7 @@ export default function FAQSection({ onApplyNow }: FAQSectionProps) {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="mailto:support@britinstitute.uk"
+              href="mailto:info@britinstitute.uk"
               className="inline-flex items-center justify-center px-8 py-3 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition-colors"
             >
               Contact Support
