@@ -92,6 +92,7 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
           email: formData.email,
           phone: formData.phone,
           course: formData.course,
+          source: "Data Analytics Landing Page",
           subject: `${formData.course || 'Data Analytics Career Program'} - Application`,
           message: `User submitted an application for the ${formData.course || 'Data Analytics Career Program'}.`,
         }),
