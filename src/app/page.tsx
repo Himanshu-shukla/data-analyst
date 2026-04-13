@@ -1,119 +1,102 @@
-'use client';
+import type { Metadata } from 'next';
+import HomePageClient from '@/components/HomePageClient';
 
-import { useState } from 'react';
-import toast from 'react-hot-toast';
-import ApplicationForm from '@/components/ApplicationForm';
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import CompaniesSection from '@/components/CompaniesSection';
-import FeaturesSection from '@/components/FeaturesSection';
-import UrgencyScarcity from '@/components/UrgencyScarcity';
-import SocialProofNumbers from '@/components/SocialProofNumbers';
-import GuaranteesSection from '@/components/GuaranteesSection';
-import VideoSection from '@/components/VideoSection';
-import CourseStructure from '@/components/CourseStructure';
-import InstructorCredibility from '@/components/InstructorCredibility';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import TrustpilotReviews from '../components/TrustpilotReviews';
-import CurrentBatchTestimonials from '@/components/CurrentBatchTestimonials';
-import VideoTestimonials from '@/components/VideoTestimonials';
-import AIComparisonSection from '@/components/AIComparisonSection';
-import FAQSection from '@/components/FAQSection';
-import CertificateSection from '@/components/CertificateSection';
-import Footer from '@/components/Footer';
-import { VIDEO_CONFIG } from '@/config/video';
+const siteUrl = 'https://britinstitute.uk';
+
+export const metadata: Metadata = {
+  title: 'Data Analytics Career Program',
+  description:
+    'Join Brit Institute’s 6-month Data Analytics Career Program to learn Python, SQL, Excel, Tableau, and Power BI with hands-on projects and career support.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    title: 'Brit Institute Data Analytics Career Program',
+    description:
+      'Learn Python, SQL, Excel, Tableau, and Power BI through a practical data analytics program designed to help learners build job-ready skills.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Brit Institute Data Analytics Career Program',
+    description:
+      'Hands-on data analytics training with Python, SQL, Excel, Tableau, Power BI, and career support.',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do I need any math or programming background for data analysis?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Basic math skills are helpful, but not required. The program starts with the fundamentals and teaches Python from scratch for data analysis.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I really get a data analyst job after 6 months?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The program is structured to help learners build practical skills, complete portfolio projects, and prepare for analyst roles with career support.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you provide job placement assistance?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Brit Institute offers career support such as resume guidance, interview preparation, and job-focused assistance after program completion.',
+      },
+    },
+  ],
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Brit Institute',
+  url: siteUrl,
+  logo: `${siteUrl}/britinstitute.png`,
+  email: 'info@britinstitute.uk',
+  sameAs: ['https://www.trustpilot.com/review/britinstitute.uk'],
+};
+
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Data Analytics Career Program',
+  description:
+    'A 6-month practical data analytics program covering Python, SQL, Excel, Tableau, and Power BI, with portfolio-building and career support.',
+  provider: {
+    '@type': 'Organization',
+    name: 'Brit Institute',
+    sameAs: siteUrl,
+  },
+  educationalCredentialAwarded: 'Certificate of Completion',
+  teaches: ['Python', 'SQL', 'Excel', 'Tableau', 'Power BI', 'Data Visualization'],
+};
 
 export default function Home() {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [isApplicationFormOpen, setIsApplicationFormOpen] = useState(false);
-
-  const handleApplyNow = () => {
-    setIsApplicationFormOpen(true);
-  };
-
-  const handleWatchDemo = () => {
-    if (!VIDEO_CONFIG.enabled) return;
-    
-    const element = document.getElementById('demo');
-    if (element) {
-      const navbarHeight = 128; // Account for navbar + top banner
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-    setIsVideoPlaying(true);
-  };
-
   return (
-    <main className="min-h-screen bg-background overflow-x-hidden max-w-full">
-      <div className="w-full max-w-full overflow-x-hidden">{/* Main container wrapper */}
-      <Navigation onApplyNow={handleApplyNow} />
-      
-      {/* 1. Hook with Strong Value Prop */}
-      <HeroSection 
-        onApplyNow={handleApplyNow} 
-        onWatchDemo={VIDEO_CONFIG.enabled ? handleWatchDemo : undefined} 
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
-      
-      {/* 6. Video Demo - Build Trust & Show Value */}
-      {VIDEO_CONFIG.enabled && <VideoSection onApplyNow={handleApplyNow} />}
-      
-
-      {/* 2. Immediate Social Proof - Build Trust */}
-      <CompaniesSection />
-
-      {/* Video Testimonials - Real Student Stories */}
-      <VideoTestimonials />
-
-  {/* 10. Social Proof - Professional Success Stories */}
-  <TestimonialsSection />
-
-      {/* AI Comparison - Show Urgency & Value */}
-      <AIComparisonSection onApplyNow={handleApplyNow} />
-     
-
-  {/* Trustpilot Reviews - Trust Signal */}
-  <TrustpilotReviews />
-      {/* Current Batch Live Updates */}
-      <CurrentBatchTestimonials onApplyNow={handleApplyNow} />
-      
-      {/* 3. Create Urgency & Scarcity - Limited Time Offer */}
-      <UrgencyScarcity onApplyNow={handleApplyNow} />
-      
-      {/* 4. Show Real Numbers - Social Proof */}
-      <SocialProofNumbers onApplyNow={handleApplyNow} />
-      
-      {/* 5. Remove Risk - Guarantees & Income Promises */}
-      <GuaranteesSection onApplyNow={handleApplyNow} />
-      
-      {/* 7. What They Get - Course Value */}
-      <CourseStructure onApplyNow={handleApplyNow} />
-      
-      {/* 8. Build Credibility - Expert Instructors */}
-      <InstructorCredibility onApplyNow={handleApplyNow} />
-      
-      {/* 9. Why Choose Us - Unique Benefits */}
-      <FeaturesSection />
-      
-      {/* 12. Final Push - Certificate & Achievement */}
-      <CertificateSection onApplyNow={handleApplyNow} />
-      
-      {/* 11. Handle Objections - Remove Friction */}
-      <FAQSection onApplyNow={handleApplyNow} />
-      
-
-      <Footer onApplyNow={handleApplyNow} />
-
-      {/* Application Form Modal */}
-      <ApplicationForm 
-        isOpen={isApplicationFormOpen} 
-        onClose={() => setIsApplicationFormOpen(false)} 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
       />
-      </div>{/* Close main container wrapper */}
-    </main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <HomePageClient />
+    </>
   );
 }

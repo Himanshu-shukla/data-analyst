@@ -3,6 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
+const siteUrl = "https://britinstitute.uk";
+const siteName = "Brit Institute";
+const defaultTitle = "Brit Institute | Data Analytics Career Program";
+const defaultDescription =
+  "Launch your data analytics career with Brit Institute. Learn Python, SQL, Excel, Tableau, and Power BI through a practical 6-month training program with career support.";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -14,9 +20,48 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Brit Institute - Data Analytics Career Program | 6 Months to 6-Figure Success",
-  description: "Transform your career with our comprehensive Data Analytics program. Master Python, SQL, Excel, and Tableau. 98% job placement rate with £25K-£50K starting salaries.",
-  keywords: "data analyst, data analytics, Python, SQL, Excel, Tableau, Power BI, career change, data science, business intelligence",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: defaultTitle,
+    template: `%s | ${siteName}`,
+  },
+  description: defaultDescription,
+  applicationName: siteName,
+  keywords: [
+    "data analyst course",
+    "data analytics course",
+    "data analyst bootcamp",
+    "python sql excel tableau power bi course",
+    "data analytics career program",
+    "brit institute",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName,
+    title: defaultTitle,
+    description: defaultDescription,
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -26,6 +71,7 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
+  category: "education",
 };
 
 export default function RootLayout({
