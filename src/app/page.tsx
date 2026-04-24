@@ -81,7 +81,26 @@ const courseSchema = {
   teaches: ['Python', 'SQL', 'Excel', 'Tableau', 'Power BI', 'Data Visualization'],
 };
 
-export default function Home() {
+type HomeProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+function hasApplyParam(value: string | string[] | undefined): boolean {
+  if (Array.isArray(value)) {
+    return value.some((item) => hasApplyParam(item));
+  }
+
+  if (!value) {
+    return false;
+  }
+
+  return ['1', 'true', 'yes', 'open'].includes(value.toLowerCase());
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const params = await searchParams;
+  const shouldOpenApplicationForm = hasApplyParam(params?.apply) || hasApplyParam(params?.form);
+
   return (
     <>
       <script
@@ -96,7 +115,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <HomePageClient />
+      <HomePageClient initialApplicationFormOpen={shouldOpenApplicationForm} />
     </>
   );
 }

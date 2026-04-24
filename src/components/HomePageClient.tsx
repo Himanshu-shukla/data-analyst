@@ -22,8 +22,12 @@ import CertificateSection from '@/components/CertificateSection';
 import Footer from '@/components/Footer';
 import { VIDEO_CONFIG } from '@/config/video';
 
-export default function HomePageClient() {
-  const [isApplicationFormOpen, setIsApplicationFormOpen] = useState(false);
+interface HomePageClientProps {
+  initialApplicationFormOpen?: boolean;
+}
+
+export default function HomePageClient({ initialApplicationFormOpen = false }: HomePageClientProps) {
+  const [isApplicationFormOpen, setIsApplicationFormOpen] = useState(initialApplicationFormOpen);
 
   const handleApplyNow = () => {
     setIsApplicationFormOpen(true);
