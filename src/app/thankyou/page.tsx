@@ -7,14 +7,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 
-// Facebook Pixel type declaration
-// (for TypeScript safety)
-declare global {
-  interface Window {
-    fbq: (...args: any[]) => void;
-  }
-}
-
 export default function ThankYouPage() {
   const [timeUntilContact, setTimeUntilContact] = useState('2 hours');
   const [timeLeft, setTimeLeft] = useState({ hours: 14, minutes: 33 });
@@ -24,11 +16,6 @@ export default function ThankYouPage() {
   useEffect(() => {
     // Set page title
     document.title = 'Application Submitted - Data Analytics Career Program | Brit Institute';
-
-    // Track Lead conversion for Facebook Pixel
-    if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', 'Lead');
-    }
 
     // Calculate time until next business hour contact
     const now = new Date();
@@ -221,7 +208,7 @@ export default function ThankYouPage() {
                         </div>
                       </div>
                       <div className="text-sm text-gray-600">
-                        We'll contact you within {timeUntilContact}
+                        We&apos;ll contact you within {timeUntilContact}
                       </div>
                     </div>
                   </div>
@@ -321,7 +308,7 @@ export default function ThankYouPage() {
                 transition={{ delay: 0.5 }}
                 className="text-xl text-gray-600 mb-8"
               >
-                Thank you for applying to our 4-Month Data Analytics Career Program. We're excited to help you transform your career!
+                Thank you for applying to our 4-Month Data Analytics Career Program. We&apos;re excited to help you transform your career!
               </motion.p>
             </motion.div>
 
@@ -338,7 +325,7 @@ export default function ThankYouPage() {
                   <div className="bg-primary/10 p-2 rounded-lg mr-3">
                     <Clock className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900">We'll Contact You Soon</h3>
+                  <h3 className="text-xl font-semibold text-gray-900">We&apos;ll Contact You Soon</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
                   Our career counselor will call you within <strong>{timeUntilContact}</strong> to discuss:

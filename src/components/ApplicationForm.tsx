@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Target, CheckCircle, AlertCircle } from 'lucide-react';
-import { bootcampApi, type BootcampApplication } from '@/lib/api';
+import type { BootcampApplication } from '@/lib/api';
+import { trackLead, trackSubmitRequest } from '@/lib/analytics';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
@@ -102,6 +103,17 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
         throw new Error('API request failed');
       }
 
+      trackLead({
+        formName: 'data_analytics_application_form',
+        source: 'Data Analytics Landing Page',
+        course: formData.course,
+      });
+      trackSubmitRequest({
+        formName: 'data_analytics_application_form',
+        source: 'Data Analytics Landing Page',
+        course: formData.course,
+      });
+
       setIsSubmitting(false);
       setFormData({
         fullName: '',
@@ -113,7 +125,7 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
       setTouched({});
       onClose();
       router.push('/thankyou');
-    } catch (error) {
+    } catch {
       setIsSubmitting(false);
       toast.error('Something went wrong. Please try again.');
     }
@@ -363,7 +375,7 @@ export default function ApplicationForm({ isOpen, onClose }: ApplicationFormProp
               )}
 
               <p className="text-[11px] text-slate-400 text-center mt-3.5 font-medium">
-                🔒 We'll contact you within 2 hours. 100% Free & No Obligation.
+                🔒 We&apos;ll contact you within 2 hours. 100% Free & No Obligation.
               </p>
             </div>
           </motion.div>

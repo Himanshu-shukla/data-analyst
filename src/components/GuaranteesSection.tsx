@@ -1,13 +1,30 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import type { KeyboardEvent } from 'react';
 import { Shield, DollarSign, TrendingUp, CheckCircle, ArrowRight, Clock } from 'lucide-react';
+import { trackCourseInvestmentClick } from '@/lib/analytics';
 
 interface GuaranteesSectionProps {
   onApplyNow: () => void;
 }
 
 export default function GuaranteesSection({ onApplyNow }: GuaranteesSectionProps) {
+  const trackInvestmentClick = () => {
+    trackCourseInvestmentClick({
+      courseTitle: 'Data Analytics Career Program',
+      courseSlug: 'data-analytics',
+      currency: 'GBP',
+    });
+  };
+
+  const handleInvestmentKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+
+    event.preventDefault();
+    trackInvestmentClick();
+  };
+
   const guarantees = [
     {
       icon: <Shield className="w-8 h-8" />,
@@ -60,18 +77,23 @@ export default function GuaranteesSection({ onApplyNow }: GuaranteesSectionProps
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center space-x-2 bg-green-100 border border-green-300 rounded-full px-6 py-2 mb-6"
+            role="button"
+            tabIndex={0}
+            onClick={trackInvestmentClick}
+            onKeyDown={handleInvestmentKeyDown}
+            aria-label="Track course investment interest for Data Analytics Career Program"
+            className="inline-flex cursor-pointer items-center space-x-2 bg-green-100 border border-green-300 rounded-full px-6 py-2 mb-6 outline-none transition hover:bg-green-200 focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
           >
             <Shield className="w-5 h-5 text-green-600" />
             <span className="text-green-700 font-semibold">Risk-Free Investment</span>
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            We're So Confident, We <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Guarantee</span> Your Success
+            We&apos;re So Confident, We <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Guarantee</span> Your Success
           </h2>
           
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Your success is our reputation. That's why we back our program with industry-leading guarantees 
+            Your success is our reputation. That&apos;s why we back our program with industry-leading guarantees 
             that remove all risk from your investment in your future.
           </p>
         </motion.div>
@@ -114,7 +136,7 @@ export default function GuaranteesSection({ onApplyNow }: GuaranteesSectionProps
               </div>
               
               <p className="text-xl text-gray-200 mb-8">
-                Our program is designed to accelerate your career transformation. Here's what our graduates achieve:
+                Our program is designed to accelerate your career transformation. Here&apos;s what our graduates achieve:
               </p>
 
               <div className="space-y-4">
@@ -170,13 +192,13 @@ export default function GuaranteesSection({ onApplyNow }: GuaranteesSectionProps
             Zero Risk, Maximum Reward
           </h3>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Experience our program with complete confidence. We're committed to your success with 
+            Experience our program with complete confidence. We&apos;re committed to your success with 
             ongoing support, personalized mentoring, and guaranteed career assistance.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-left">
-              <h4 className="font-bold text-gray-800 mb-3">✅ What's Guaranteed for Your Success:</h4>
+              <h4 className="font-bold text-gray-800 mb-3">✅ What&apos;s Guaranteed for Your Success:</h4>
               <ul className="space-y-2 text-gray-600">
                 <li>• Full access to all course materials</li>
                 <li>• Personal mentorship and support</li>
