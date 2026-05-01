@@ -113,7 +113,7 @@ export default function ThankYouPage() {
                 >
                   <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center p-1 flex-shrink-0">
                     <Image
-                      src="/britinstitute.png"
+                      src="/britinstitute_v1.png"
                       alt="Brit Institute Logo"
                       width={20}
                       height={20}

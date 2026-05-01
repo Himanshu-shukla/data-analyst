@@ -61,7 +61,7 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'Brit Institute',
   url: siteUrl,
-  logo: `${siteUrl}/britinstitute.png`,
+  logo: `${siteUrl}/britinstitute_v1.png`,
   email: 'info@britinstitute.uk',
   sameAs: ['https://www.trustpilot.com/review/britinstitute.uk'],
 };

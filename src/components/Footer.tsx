@@ -15,7 +15,7 @@ export default function Footer({ onApplyNow }: FooterProps) {
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center p-1">
               <Image
-                src="/britinstitute.png"
+                src="/britinstitute_v1.png"
                 alt="Brit Institute Logo"
                 width={20}
                 height={20}

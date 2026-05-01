@@ -96,7 +96,7 @@ export default function Navigation({ onApplyNow }: NavigationProps) {
             >
               <div className="w-12 h-12 rounded-lg flex items-center justify-center p-1 flex-shrink-0">
                 <Image
-                  src="/britinstitute.png"
+                  src="/britinstitute_v1.png"
                   alt="Brit Institute Logo"
                   width={25}
                   height={25}

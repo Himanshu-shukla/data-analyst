@@ -38,8 +38,8 @@ export default function CertificateSection({ onApplyNow }: CertificateSectionPro
             </h2>
 
             <p className="text-lg text-gray-600 mb-8">
-              Upon successful completion of our 6-month comprehensive program, you'll receive an 
-              industry-recognized certificate that validates your expertise in data analysis, 
+              Upon successful completion of our 6-month comprehensive program, you'll receive an
+              industry-recognized certificate that validates your expertise in data analysis,
               Python, SQL, and business intelligence tools.
             </p>
 
@@ -86,7 +86,7 @@ export default function CertificateSection({ onApplyNow }: CertificateSectionPro
               <div className="text-center mb-6">
                 <div className="flex items-center justify-center space-x-3 mb-4">
                   <Image
-                    src="/britinstitute.png"
+                    src="/britinstitute_v1.png"
                     alt="Brit Institute"
                     width={32}
                     height={32}
@@ -106,8 +106,11 @@ export default function CertificateSection({ onApplyNow }: CertificateSectionPro
                 <p className="text-gray-700 mb-4">has successfully completed the</p>
                 <div className="bg-primary/10 rounded-lg p-4 mb-4">
                   <h5 className="text-xl font-bold text-primary mb-2">
-                    Data Analytics Professional Program
+                    Data Analytics with Gen AI
                   </h5>
+                  <h6 className="text-xl font-bold text-primary mb-2">
+                    Professional Program
+                  </h6>
                   <p className="text-sm text-gray-600">
                     6-Month Career Program • 150+ Hours • Real-World Projects
                   </p>
@@ -121,7 +124,7 @@ export default function CertificateSection({ onApplyNow }: CertificateSectionPro
               <div className="flex justify-between items-end text-xs text-gray-500">
                 <div>
                   <div className="w-20 h-px bg-gray-300 mb-1"></div>
-                  <p>Date: 18 January 2025</p>
+                  <p>Date: 18 January 2026</p>
                 </div>
                 <div className="text-right">
                   <div className="w-20 h-px bg-gray-300 mb-1 ml-auto"></div>
